@@ -10,13 +10,14 @@
 	"keywords": [
 		"graphql",
 		"github",
-		"express",
 		"node"
 	],
 	"author": "J. Pedro Ribeiro",
 	"license": "ISC",
 	"dependencies": {
-		"express": "^4.16.3"
+		"dotenv": "^5.0.1",
+		"express": "^4.16.3",
+		"node-fetch": "^2.1.2"
 	},
 	"engines": {
 		"node": "8.9.4"
