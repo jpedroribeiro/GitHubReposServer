@@ -5,13 +5,13 @@ const path = require('path');
 const PORT = process.env.PORT || 5000;
 const query = `
 	query {
-		user(login: "jpedroribeiro") {
+		user(login: "${process.env.GITHUB_PROFILE}") {
 			name
 			url
 			bio
 			avatarUrl
 			location
-			repositories (isLocked: false, privacy: PUBLIC, first: 100, orderBy: {field: CREATED_AT, direction: DESC} ){
+			repositories (privacy: PUBLIC, first: 100, orderBy: {field: CREATED_AT, direction: DESC} ){
 				nodes (){
 					id
 					name
