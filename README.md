@@ -2,7 +2,7 @@
 
 This is a very simple ExpressJS server that connects to GitHub's GraphQL API and outputs its data.
 
-This approach was mostly used to obfuscate auth keys for the client side app (currently under construction).
+This approach was mostly used to obfuscate auth keys for the [client side app](https://github.com/jpedroribeiro/GitHubReposClient).
 
 # Usage
 
