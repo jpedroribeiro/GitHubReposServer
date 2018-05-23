@@ -15,6 +15,7 @@
 	"author": "J. Pedro Ribeiro",
 	"license": "ISC",
 	"dependencies": {
+		"cors": "^2.8.4",
 		"dotenv": "^5.0.1",
 		"express": "^4.16.3",
 		"node-fetch": "^2.1.2"

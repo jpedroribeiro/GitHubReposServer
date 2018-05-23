@@ -10,8 +10,9 @@ Create a `.env` file with the following:
 
     GITHUB_PERSONAL_ACCESS_TOKEN=YOUR_TOKEN
     GITHUB_PROFILE=USER
+    ORIGIN=YOUR_CLIENT_ORIGIN
 
-Replacing `YOUR_TOKEN` with a token you got via your [GitHub Developer Settings](https://github.com/settings/tokens) and `USER` with any GitHub username, like mine `jpedroribeiro`.
+Replacing `YOUR_TOKEN` with a token you got via your [GitHub Developer Settings](https://github.com/settings/tokens), `USER` with any GitHub username, like mine `jpedroribeiro`, and `ORIGIN` for your cient's origin, for example `http://localhost:3000`.
 
 ### Note to self: when using Heroku...
 

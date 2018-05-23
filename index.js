@@ -1,5 +1,11 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
+const cors = require('cors');
+const corsOptions = {
+	origin: process.env.ORIGIN,
+	optionsSuccessStatus: 200
+};
+
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
@@ -44,7 +50,7 @@ fetch('https://api.github.com/graphql', {
 	.then(res => res.json())
 	.then(body => {
 		express()
-			.get('/', (req, res) => res.json(body))
+			.get('/', cors(corsOptions), (req, res) => res.json(body))
 			.listen(PORT, () => console.log(`Listening on ${PORT}`));
 	})
 	.catch(error => console.error(error));
