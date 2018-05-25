@@ -162,9 +162,9 @@ fetch('https://api.github.com/graphql', {
 		express()
 			.use(cors(corsOptions))
 			// The GraphQL endpoint
-			.get('/graphql', bodyParser.json(), graphqlExpress({ schema }))
+			.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
 			// GraphiQL, a visual editor for queries
-			.get('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
+			.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }))
 			.listen(PORT, () => console.log('server running'));
 	})
 	.catch(error => console.error(error));
