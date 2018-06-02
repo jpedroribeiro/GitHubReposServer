@@ -126,7 +126,7 @@ fetch('https://api.github.com/graphql', {
     type Query {
       author: Author
       repository(id: String): Repository
-      repositories: [Repository]
+      repositories(filter: String, orderBy: String): [Repository]
     }
   `;
 
@@ -136,7 +136,31 @@ fetch('https://api.github.com/graphql', {
 				author: () => author,
 				repository: (root, search) =>
 					repositories.filter(repo => repo.id == search.id)[0],
-				repositories: () => repositories
+				repositories: (obj, args, ctx, info) => {
+					let returnedRepos = repositories;
+					if (Object.getOwnPropertyNames(args).length) {
+						if (args.filter) {
+							// Filtering
+							returnedRepos = returnedRepos.filter(
+								repo =>
+									repo.repositoryTopics.find(
+										topic => topic.indexOf(args.filter) > -1
+									) !== undefined
+							);
+						}
+
+						if (args.orderBy && args.orderBy === 'createdAt_ASC') {
+							returnedRepos = returnedRepos.sort((a, b) => {
+								const aDate = new Date(a.createdAt);
+								const bDate = new Date(b.createdAt);
+
+								return aDate < bDate ? -1 : 1;
+							});
+						}
+					}
+
+					return returnedRepos;
+				}
 			},
 			Repository: {
 				topics: repository => {
